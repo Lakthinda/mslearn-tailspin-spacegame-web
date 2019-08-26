@@ -1,3 +1,6 @@
+# Build Badges
+[![Build Status](https://dev.azure.com/lranasinghe0350/Space%20Game-Web-Workflow/_apis/build/status/Lakthinda.mslearn-tailspin-spacegame-web?branchName=master)](https://dev.azure.com/lranasinghe0350/Space%20Game-Web-Workflow/_build/latest?definitionId=2&branchName=master)
+
 
 # Contributing
 

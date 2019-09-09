@@ -43,7 +43,7 @@ steps:
     command: 'restore'
     projects: '**/*.csproj'
 
-# - task: DotNetCoreCLI@2
+ - task: DotNetCoreCLI@2
 #   displayName: 'Build the project - $(buildConfiguration)'
 #   inputs:
 #     command: 'build'
@@ -59,7 +59,6 @@ steps:
 #     arguments: '--no-build --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)/$(buildConfiguration)'
 #     zipAfterPublish: true
 
-
 - template: Templates/build.yml
   parameters:
     buildConfiguration: 'Debug'
@@ -67,6 +66,14 @@ steps:
 - template: Templates/build.yml
   parameters:
     buildConfiguration: 'Release'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Run unit tests - $(buildConfiguration)'
+  inputs:
+    command: 'test'
+    arguments: '--no-build --configuration $(buildConfiguration)'
+    publishTestResults: true
+    projects: '**/*.Tests.csproj'
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: drop'
